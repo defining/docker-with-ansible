@@ -12,4 +12,6 @@ Démarrer plus de serveur web:
 docker-compose scale web=4
 
 "Rentrer" dans le conteneur maitre:
-docker-compose exec master bash 
+docker-compose exec master bash
+
+Le code est grandement inspiré par le youtubeur cocadmin 
