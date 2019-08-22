@@ -1,0 +1,19 @@
+---
+- hosts: dev_lb
+
+  roles:
+  - geerlingguy.haproxy
+
+  vars:
+    haproxy_backend_servers:
+    - name: ansible_web_4
+      address: ansible_web_4:80
+    - name: ansible_web_5
+      address: ansible_web_5:80
+  
+  tasks:
+  - name: retirer cookie
+    lineinfile:
+      path: /etc/haproxy/haproxy.cfg
+      regexp: ".*cookie SERVERID.*"
+      state: absent

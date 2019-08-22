@@ -1,0 +1,4 @@
+---
+# handlers file for apache-php7
+- name: restart apache
+  service: name=apache2 state=restarted

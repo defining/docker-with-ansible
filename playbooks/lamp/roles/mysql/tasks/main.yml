@@ -1,0 +1,30 @@
+---
+- name: installer mysql server et client
+  apt: 
+    name: 
+    - mysql-server
+    - mysql-client
+    - python-pymysql
+
+- name: bind mysql remote address
+  ini_file: dest=/etc/mysql/mysql.conf.d/mysqld.cnf
+            section=mysqld
+            option=bind-address
+            value=0.0.0.0
+
+- name: demarrer mysql
+  shell: service mysql restart
+
+- name: Supprimer la base de test.
+  mysql_db: db=test state=absent
+
+- name: Create a database.
+  mysql_db: "db={{ nom_bdd }} state=present"
+
+- name: Create a MySQL user.
+  mysql_user:
+    name: "{{ nom_bdd }}"
+    password: "1234"
+    priv: "{{ nom_bdd }}.*:ALL"
+    host: "%"
+    state: present

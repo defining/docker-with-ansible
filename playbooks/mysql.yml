@@ -1,0 +1,31 @@
+---
+- hosts: dev_db
+  tasks:
+  - name: installer mysql server et client
+    apt: 
+      name: 
+      - mysql-server
+      - mysql-client
+      - python-pymysql
+    notify: demarrer mysql
+
+  - name: Supprimer la db de test.
+    mysql_db: db=test state=absent
+
+  - name: Cree une base de donnée.
+    mysql_db: "db={{ nom_bdd }} state=present"
+
+  - name: Create a MySQL user.
+    mysql_user:
+      name: "{{ nom_bdd }}"
+      password: "1234"
+      priv: "{{ nom_bdd }}.*:ALL"
+      host: "*"
+      state: present
+
+  vars:
+    nom_bdd: cocadmin
+
+  handlers:
+  - name: demarrer mysql
+    shell: service mysql restart
