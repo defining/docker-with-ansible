@@ -1,5 +1,5 @@
 # dockerfile-ansible
-Dockerfile to test ansible
+Dockercompose to test ansible
 
 Ce ficher docker-compose.yml permet de démarrer un conteneur "maitre" qui contient ansible 2.7
 et 3 autres types de conteneur ubuntu16 vierges.

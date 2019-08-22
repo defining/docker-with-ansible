@@ -1,0 +1,21 @@
+version: '3'
+services:
+  master:
+    image: williamyeh/ansible:debian9
+    volumes:
+      - "/Users/thomas/.ssh/config:/root/.ssh/config"
+      - "/Users/thomas/repos/ansible/hosts:/etc/ansible/hosts"
+      - "/Users/thomas/repos/ansible/playbooks:/root/playbooks"
+    command: tail -f /dev/null
+    
+  web:
+    build: .
+
+  db:
+    build: .
+
+  lb:
+    build: .
+    ports: 
+    - 8000:80
+
