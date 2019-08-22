@@ -1,21 +1,28 @@
 version: '3'
 services:
   master:
-    image: williamyeh/ansible:debian9
+    build:
+      context: .
+      dockerfile: ./master.Dockerfile
+    working_dir: /root/playbooks
     volumes:
-      - "/Users/thomas/.ssh/config:/root/.ssh/config"
-      - "/Users/thomas/repos/ansible/hosts:/etc/ansible/hosts"
-      - "/Users/thomas/repos/ansible/playbooks:/root/playbooks"
+      - /c/repos/ansible/playbooks:/root/playbooks
+      - /c/repos/ansible/config:/etc/ansible
     command: tail -f /dev/null
     
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: ./server.Dockerfile
 
   db:
-    build: .
+    build:
+      context: .
+      dockerfile: ./server.Dockerfile
 
   lb:
-    build: .
+    build:
+      context: .
+      dockerfile: ./server.Dockerfile
     ports: 
-    - 8000:80
-
+    - 8080:80
