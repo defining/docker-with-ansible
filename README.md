@@ -14,4 +14,7 @@ docker-compose scale web=4
 "Rentrer" dans le conteneur maitre:
 docker-compose exec master bash
 
-Le code est grandement inspiré par le youtubeur cocadmin 
+Pour lancer ansible du serveur maitre une fois dans le dossier lamp:
+ansible-playbooks lamp.yml 
+
+Le code source provient du youtubeur cocadmin (https://www.youtube.com/channel/UCVRJ6D343dX-x730MRP8tNw) il sera modifié une fois que je le maitriserais. N'hésitez pas à vous abonner à sa chaîne.
