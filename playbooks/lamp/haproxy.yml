@@ -6,10 +6,10 @@
 
   vars:
     haproxy_backend_servers:
-    - name: ansible_web_4
-      address: ansible_web_4:80
-    - name: ansible_web_5
-      address: ansible_web_5:80
+    - name: docker_ansible_web_4
+      address: docker_ansible_web_4:80
+    - name: docker_ansible_web_5
+      address: docker_ansible_web_5:80
   
   tasks:
   - name: retirer cookie

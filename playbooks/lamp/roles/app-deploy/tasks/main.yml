@@ -14,7 +14,7 @@
     socket: /var/lib/haproxy/stats
     fail_on_not_found: yes
     shutdown_sessions: yes
-  delegate_to: ansible_lb_1
+  delegate_to: docker_ansible_lb_1
 
 - git:
     repo: https://gitlab.com/ttwthomas/app-example-php.git
@@ -27,7 +27,7 @@
     name: cocadmin
     state: import
     target: /var/www/html/app/creer_table.sql
-    login_host: ansible_db_1
+    login_host: docker_ansible_db_1
     login_password: 1234
     login_user: cocadmin
   run_once: true
@@ -46,4 +46,4 @@
     host: '{{ inventory_hostname }}'
     backend: habackend
     socket: /var/lib/haproxy/stats
-  delegate_to: ansible_lb_1
+  delegate_to: docker_ansible_lb_1
