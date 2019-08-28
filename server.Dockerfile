@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y openssh-server vim python net-tools telnet
+RUN apt-get update && apt-get install -y openssh-server vim python net-tools telnet curl git make zsh wget && wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true && git clone https://www.github.com/defining/dotfiles_dock ~/dotfiles && make -C ~/dotfiles/ && chsh -s $(which zsh)
 RUN mkdir /var/run/sshd
 RUN echo 'root:ansible' | chpasswd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
