@@ -17,7 +17,7 @@
   delegate_to: docker_ansible_lb_1
 
 - git:
-    repo: https://gitlab.com/ttwthomas/app-example-php.git
+    repo: https://github.com/defining/test_haproxy.git
     dest: /var/www/html/app
     force: yes
   register: git_repo
